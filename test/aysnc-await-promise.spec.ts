@@ -17,8 +17,8 @@ describe('async await promise test suite', () => {
             console.log(result);
             // this setTimeout does not have anything positive!!!
             setTimeout(() => {
-                console.log('wait for 2000 sec')
-            }, 2000);
+                console.log('wait for 1000 sec')
+            }, 1000);
             expect(result).to.equal(4);
         });
 
