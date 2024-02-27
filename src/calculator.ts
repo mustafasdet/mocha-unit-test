@@ -1,5 +1,6 @@
 // export class Calculator {
 import axios from 'axios';
+import { SinonSpy } from 'sinon';
 const baseUrl = `https://jsonplaceholder.typicode.com`;
 class Calculator {
     add(num1: number, num2: number) {
@@ -53,6 +54,22 @@ class Calculator {
 
     async createUser(userpayload: object) {
         return await axios.post(`${baseUrl}/users`, userpayload);
+    }
+
+    // from QA Box Let's Test youtube video series 
+    // spy example for a callback argument 
+    myCalc(a: number, b: number, callback: SinonSpy<any[], any>) {
+        callback(a, b);
+    }
+
+    // spy example for a function
+    printString(str:string) {
+        console.log(str);
+    }
+    // we spy the above function for the below one
+    sumWithCallingPrintString(a:number, b:number){
+        this.printString('my testing world');
+        return a+b;
     }
 }
 export default Calculator;

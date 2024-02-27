@@ -12,13 +12,13 @@ describe('user', () => {
 
         // userMock.expects('findUser').resolves(new User(11, "John")); // works
         // userMock.expects('findUser').resolves(stubUser); // also works
-        const expectation = userMock.expects('findUser').exactly(5).withArgs(userArgs.id).resolves(stubUser); // also works
+        const expectation = userMock.expects('findUser').exactly(5).withArgs(userArgs.id).resolves(stubUser); // also works. Calls till 5 (<=5)are mocked
 
         const result = await User.findUser(11);
         const result2 = await User.findUser(11);
         const result3 = await User.findUser(11);
         const result4 = await User.findUser(11);
-        const result5= await User.findUser(11);
+        const result5 = await User.findUser(11);
         // const result6 = await User.findUser(11);
         // expect(result.id).equal(11);
         expect(expectation.callCount).equal(5);
